@@ -1,0 +1,375 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.modal-container {
+  background: white;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 480px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.modal-close:hover {
+  background: #ff6b35;
+  color: white;
+  transform: rotate(90deg);
+}
+
+.modal-close:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+/* Mobile touch optimization */
+@media (hover: none) and (pointer: coarse) {
+  .modal-close:hover {
+    background: #f5f5f5;
+    color: #666;
+    transform: none;
+  }
+  
+  .modal-close:active {
+    background: #ff6b35;
+    color: white;
+    transform: rotate(90deg) scale(0.95);
+  }
+  
+  .submit-button:hover:not(:disabled) {
+    transform: none;
+  }
+  
+  .submit-button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  
+  .modal-close,
+  .submit-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Modal Header */
+.modal-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.modal-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.modal-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+/* Form Styles */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  color: #999;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-wrapper input:focus {
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+}
+
+.input-wrapper input.error {
+  border-color: #ff4444;
+}
+
+.input-wrapper input::placeholder {
+  color: #aaa;
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 13px;
+  margin-top: -4px;
+}
+
+.contact-error {
+  background: #fff5f5;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #ff4444;
+  margin-top: -8px;
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  margin-top: 8px;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-footer {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  margin-top: -8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 16px;
+    align-items: flex-end;
+  }
+  
+  .modal-container {
+    padding: 32px 24px;
+    border-radius: 20px 20px 0 0;
+    max-width: 100%;
+    width: 100%;
+    max-height: 85vh;
+    animation: slideUpMobile 0.3s ease;
+  }
+  
+  @keyframes slideUpMobile {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modal-close {
+    width: 44px;
+    height: 44px;
+    top: 16px;
+    right: 16px;
+  }
+  
+  .modal-header {
+    margin-bottom: 24px;
+    padding-right: 40px;
+  }
+  
+  .modal-header h2 {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+  
+  .modal-header p {
+    font-size: 14px;
+  }
+  
+  .modal-form {
+    gap: 20px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+  }
+  
+  .input-wrapper input {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 14px 16px 14px 48px;
+    min-height: 48px;
+  }
+  
+  .input-icon {
+    left: 14px;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .submit-button {
+    padding: 16px;
+    font-size: 16px;
+    min-height: 48px;
+    border-radius: 10px;
+  }
+  
+  .form-footer {
+    font-size: 11px;
+    padding: 0 8px;
+  }
+  
+  .error-message {
+    font-size: 12px;
+  }
+  
+  .contact-error {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 0;
+  }
+  
+  .modal-container {
+    padding: 28px 20px;
+    border-radius: 20px 20px 0 0;
+    max-height: 90vh;
+  }
+  
+  .modal-header h2 {
+    font-size: 22px;
+  }
+  
+  .modal-header p {
+    font-size: 13px;
+  }
+  
+  .modal-form {
+    gap: 18px;
+  }
+  
+  .input-wrapper input {
+    padding: 12px 14px 12px 44px;
+  }
+  
+  .input-icon {
+    left: 12px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .submit-button {
+    padding: 14px;
+    font-size: 15px;
+  }
+}
+
+/* Smooth Scrollbar */
+.modal-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+  background: #ff6b35;
+  border-radius: 10px;
+}
+
+.modal-container::-webkit-scrollbar-thumb:hover {
+  background: #e55a28;
+}

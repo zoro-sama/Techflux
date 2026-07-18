@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ink — deep warm espresso foundation */
+  --color-ink-950: #1f1710;
+  --color-ink-900: #291f16;
+  --color-ink-800: #362a1e;
+  --color-ink-700: #463728;
+  --color-ink-600: #5c4a36;
+
+  /* Ivory — warm cream surfaces */
+  --color-ivory-50: #fbf7ef;
+  --color-ivory-100: #f6eee0;
+  --color-ivory-200: #ecdfc9;
+  --color-ivory-300: #dccaab;
+
+  /* Gold — warm amber & terracotta accent */
+  --color-gold-200: #f7dcb4;
+  --color-gold-300: #efc28a;
+  --color-gold-400: #e2a05e;
+  --color-gold-500: #cb7f42;
+  --color-gold-600: #ab622c;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-marquee: marquee 36s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-ink-900 font-sans text-ivory-50;
+  }
+
+  ::selection {
+    background: var(--color-gold-400);
+    color: var(--color-ink-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-400);
+    outline-offset: 3px;
+  }
+}
+
+@utility eyebrow {
+  @apply text-[0.7rem] font-medium tracking-[0.28em] uppercase;
+}
+
+@utility hairline {
+  @apply border border-ivory-50/10;
+}
+
+@utility hairline-dark {
+  @apply border border-ink-900/12;
+}
+
+/* Faint warm dot grid for dark sections — softer than hard lines */
+@utility grid-lines {
+  background-image: radial-gradient(
+    rgb(251 247 239 / 0.07) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 36px 36px;
+}
+
+/* Soft radial glow used behind hero / CTA content */
+@utility glow-gold {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    rgb(203 127 66 / 0.2),
+    transparent 70%
+  );
+}
